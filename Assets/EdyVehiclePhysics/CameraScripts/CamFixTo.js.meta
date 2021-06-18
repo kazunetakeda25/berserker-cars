@@ -1,0 +1,20 @@
+fileFormatVersion: 2
+guid: 85c1d99f7e3b9004b9ebc8a36f69b63b
+labels:
+- car
+- vehicle
+- wheel
+- tire
+- physics
+- bus
+- truck
+- suspension
+- skidmark
+- pickup
+- carpaint
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
