@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: 3b6f4a9f626a46f40a02e9c59d8835da
+labels:
+- car
+- vehicle
+- wheel
+- tire
+- physics
+- bus
+- truck
+- suspension
+- skidmark
+- pickup
+- carpaint
+ShaderImporter:
+  defaultTextures: []
+  userData: 
