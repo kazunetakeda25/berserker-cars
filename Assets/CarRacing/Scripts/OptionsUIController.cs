@@ -16,7 +16,7 @@ public class OptionsUIController : MonoBehaviour {
 		slider.sliderValue = PlayerPrefs.GetFloat ("audioVolume", 1);
 		if(PlayerPrefs.GetInt ("sound")==0){
 			if(PlayerPrefs.GetInt ("music")==0){
-				audio.Play();
+				GetComponent<AudioSource>().Play();
 			}
 		}
 		if(slider.sliderValue>0){
@@ -94,13 +94,13 @@ public class OptionsUIController : MonoBehaviour {
 
 			Music.spriteName = "music_of";
 			PlayerPrefs.SetInt ("music",1);
-			audio.Stop();
+			GetComponent<AudioSource>().Stop();
 		}
 		else if(PlayerPrefs.GetInt ("music")==1){
 			Music.spriteName = "music_on";
 			PlayerPrefs.SetInt ("music",0);
 			if(PlayerPrefs.GetInt ("sound")==0){
-				audio.Play();
+				GetComponent<AudioSource>().Play();
 			}
 		}
 	}
@@ -110,13 +110,13 @@ public class OptionsUIController : MonoBehaviour {
 			
 			Sound.spriteName = "sound_of";
 			PlayerPrefs.SetInt ("sound",1);
-			audio.Stop();
+			GetComponent<AudioSource>().Stop();
 		}
 		else if(PlayerPrefs.GetInt ("sound")==1){
 			Sound.spriteName = "sound_on";
 			PlayerPrefs.SetInt ("sound",0);
 			if(PlayerPrefs.GetInt ("music")==0){
-				audio.Play();
+				GetComponent<AudioSource>().Play();
 			}
 		}
 	}

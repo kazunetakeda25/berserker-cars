@@ -48,7 +48,7 @@ public class EditPivotEditor : Editor
 			pivotposition.vector3Value = ((EditPivotBehaviour)target).transform.position;
 		}
 		GUI.enabled = true;
-		if ( ((EditPivotBehaviour)target).transform.GetChildCount() == 0 )
+		if ( ((EditPivotBehaviour)target).transform.childCount == 0 )
 		{
 			GUI.enabled = false;
 		}
@@ -162,7 +162,7 @@ public class EditPivotEditor : Editor
 			targetObject.ApplyModifiedProperties();
 		}
 		GUI.enabled = true;
-		if ( ((EditPivotBehaviour)target).transform.GetChildCount() == 0 )
+		if ( ((EditPivotBehaviour)target).transform.childCount == 0 )
 		{
 			GUI.enabled = false;
 		}		

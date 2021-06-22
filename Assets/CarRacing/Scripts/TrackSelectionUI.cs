@@ -49,7 +49,7 @@ public class TrackSelectionUI : MonoBehaviour {
 		if (currentIndex > totalTracks) return;
 		if(PlayerPrefs.GetInt ("sound")==0){
 			
-			audio.PlayOneShot(clickClip);
+			GetComponent<AudioSource>().PlayOneShot(clickClip);
 		}
 
 		currentIndex++;
@@ -72,7 +72,7 @@ public class TrackSelectionUI : MonoBehaviour {
 			return;
 		if(PlayerPrefs.GetInt ("sound")==0){
 			
-			audio.PlayOneShot(clickClip);
+			GetComponent<AudioSource>().PlayOneShot(clickClip);
 		}
 
 		currentIndex--;
@@ -116,7 +116,7 @@ public class TrackSelectionUI : MonoBehaviour {
 	void ChasePressed(){
 		if(PlayerPrefs.GetInt ("sound")==0){
 			
-			audio.PlayOneShot(clickClip);
+			GetComponent<AudioSource>().PlayOneShot(clickClip);
 		}
 		//PlayerPrefs.SetString("CONTROL","CAMERA");
 	//	PlayerPrefs.SetInt ("track", (currentIndex%2)+1);
@@ -125,7 +125,7 @@ public class TrackSelectionUI : MonoBehaviour {
 	void GarragePressed(){
 		if(PlayerPrefs.GetInt ("sound")==0){
 			
-			audio.PlayOneShot(clickClip);
+			GetComponent<AudioSource>().PlayOneShot(clickClip);
 		}
 		Application.LoadLevel (1);
 	}
@@ -165,7 +165,7 @@ public class TrackSelectionUI : MonoBehaviour {
 		int points = PlayerPrefs.GetInt ("totalPoints",0);
 		if(points< getCurrentIndexTrackPoints()){
 			if(PlayerPrefs.GetInt ("sound")==0){
-				audio.PlayOneShot(notEnoughClip);
+				GetComponent<AudioSource>().PlayOneShot(notEnoughClip);
 				
 			}
 			GameObject label = Instantiate(Resources.Load("NotEnoughPoints")) as GameObject;
@@ -174,7 +174,7 @@ public class TrackSelectionUI : MonoBehaviour {
 			return;
 		}
 		if(PlayerPrefs.GetInt ("sound")==0){
-			audio.PlayOneShot(clickClip);
+			GetComponent<AudioSource>().PlayOneShot(clickClip);
 			
 		}
 		points -= getCurrentIndexTrackPoints ();
@@ -217,7 +217,7 @@ public class TrackSelectionUI : MonoBehaviour {
 			return;	
 		}
 		if(PlayerPrefs.GetInt ("sound")==0){
-			audio.PlayOneShot(clickClip);
+			GetComponent<AudioSource>().PlayOneShot(clickClip);
 			
 		}
 		PlayerPrefs.SetInt ("track", currentIndex);

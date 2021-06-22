@@ -26,7 +26,7 @@ public class OpponentCarWayCheck : MonoBehaviour {
 			Invoke("stopCar",rand);
 		}
 		if (Application.platform == RuntimePlatform.Android) {
-			checkPoints[10].collider.enabled = false;
+			checkPoints[10].GetComponent<Collider>().enabled = false;
 		}
 	}
 	void stopCar(){

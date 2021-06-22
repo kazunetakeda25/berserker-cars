@@ -73,7 +73,7 @@ public class UIAnchor : MonoBehaviour
 
 	Animation mAnim;
 
-	void Awake () { mAnim = animation; }
+	void Awake () { mAnim = GetComponent<Animation>(); }
 
 	/// <summary>
 	/// Automatically find the camera responsible for drawing the widgets under this object.
@@ -82,7 +82,7 @@ public class UIAnchor : MonoBehaviour
 	void Start ()
 	{
 		mIsWindows = (Application.platform == RuntimePlatform.WindowsPlayer ||
-			Application.platform == RuntimePlatform.WindowsWebPlayer ||
+			//Application.platform == RuntimePlatform.WindowsWebPlayer ||
 			Application.platform == RuntimePlatform.WindowsEditor);
 
 		if (uiCamera == null) uiCamera = NGUITools.FindCameraForLayer(gameObject.layer);

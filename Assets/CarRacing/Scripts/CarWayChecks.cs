@@ -70,7 +70,7 @@ public class CarWayChecks : MonoBehaviour {
 			if(firstTime){
 				if(Time.time - startTime >3){
 					startTime =  Time.time;
-					audio.PlayOneShot(wrongDirClip);
+					GetComponent<AudioSource>().PlayOneShot(wrongDirClip);
 				}
 			}
 
@@ -99,7 +99,7 @@ public class CarWayChecks : MonoBehaviour {
 			}
 		}
 		if (Application.platform == RuntimePlatform.Android) {
-			checkPoints[15].collider.enabled = false;
+			checkPoints[15].GetComponent<Collider>().enabled = false;
 		}
 		if (isLapCleared && checPointNumb==1) {
 			lap++;
@@ -113,7 +113,7 @@ public class CarWayChecks : MonoBehaviour {
 
 			}
 			else{
-				audio.PlayOneShot(lapClearedClip);
+				GetComponent<AudioSource>().PlayOneShot(lapClearedClip);
 				lapLbl.text = lap+" / "+ totalLaps;
 				lap--;
 			}
@@ -152,8 +152,8 @@ public class CarWayChecks : MonoBehaviour {
 
 	void refershCar(){
 		main.SendMessage ("setFValue", 0f);
-		rigidbody.velocity = Vector3.zero;
-		rigidbody.angularVelocity = Vector3.zero;
+		GetComponent<Rigidbody>().velocity = Vector3.zero;
+		GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
 		WayCheck wayCheck = checkPoints [checPointNumb - 1];
 		transform.localPosition = wayCheck.carRefereshPos;
 		if (wayCheck.isLocalRot) {

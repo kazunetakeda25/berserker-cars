@@ -1,4 +1,8 @@
-﻿Shader "FX/Waves/Wave Creator +" {
+﻿// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
+// Upgrade NOTE: replaced '_World2Object' with 'unity_WorldToObject'
+// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+Shader "FX/Waves/Wave Creator +" {
 
 	Properties {
 	
@@ -125,7 +129,7 @@
 				
 				half4 new_position = v.vertex;
 				
-				float view_distance = distance (mul(_Object2World, new_position), _CamPos); 
+				float view_distance = distance (mul(unity_ObjectToWorld, new_position), _CamPos); 
 				_Amp = max( 0.0, (_Amp - ((_Amp * view_distance) / _WaveFadeout)));
 				
 				o.height_properties = half3 (0, 0, 0);
@@ -151,12 +155,12 @@
 					o.height_properties.z = view_distance;
 				}
 				
-				o.pos_world = mul(_Object2World, new_position);
-				o.tangent_world = normalize (mul (_Object2World, v.tangent).xyz);
-				o.normal_world = normalize( mul( half4(v.normal, 0.0), _World2Object).xyz);
+				o.pos_world = mul(unity_ObjectToWorld, new_position);
+				o.tangent_world = normalize (mul (unity_ObjectToWorld, v.tangent).xyz);
+				o.normal_world = normalize( mul( half4(v.normal, 0.0), unity_WorldToObject).xyz);
 				o.binormal_world = normalize (cross (o.normal_world, o.tangent_world) * v.tangent.w);
 				
-				o.pos = mul(UNITY_MATRIX_MVP, new_position); 
+				o.pos = UnityObjectToClipPos(new_position); 
 				o.tex = v.texcoord;
 				
 					o.view_direction = normalize (_CamPos.xyz - o.pos_world.xyz);

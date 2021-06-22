@@ -27,11 +27,11 @@ public class CarSelectionUIController : MonoBehaviour {
 	void Start () {
 		if(PlayerPrefs.GetInt ("sound")==0){
 			if(PlayerPrefs.GetInt ("music")==0){
-				audio.Play();
+				GetComponent<AudioSource>().Play();
 			}
 		}
 
-		bodyMat = CarPrefab.renderer.materials [1];
+		bodyMat = CarPrefab.GetComponent<Renderer>().materials [1];
 		checkArrows ();
 		setCarColor ();
 		if (!PlayerPrefs.HasKey ("unlockedCars")) {
@@ -61,7 +61,7 @@ public class CarSelectionUIController : MonoBehaviour {
 	//	PlayerPrefs.SetInt ("track", 2);
 	//	PlayerPrefs.SetInt ("CurrentCarSelected", currentIndex);
 		if(PlayerPrefs.GetInt ("sound")==0){
-			audio.PlayOneShot(clickClip);
+			GetComponent<AudioSource>().PlayOneShot(clickClip);
 			
 		}
 		Application.LoadLevel ("Tracks");
@@ -70,7 +70,7 @@ public class CarSelectionUIController : MonoBehaviour {
 
 	void ReturnPressed(){
 		if(PlayerPrefs.GetInt ("sound")==0){
-			audio.PlayOneShot(clickClip);
+			GetComponent<AudioSource>().PlayOneShot(clickClip);
 			
 		}
 		Application.LoadLevel (0);
@@ -84,7 +84,7 @@ public class CarSelectionUIController : MonoBehaviour {
 	void leftArrowPressed(){
 		if (waitForNext) return;
 		if(PlayerPrefs.GetInt ("sound")==0){
-				audio.PlayOneShot(carChangeClip);
+				GetComponent<AudioSource>().PlayOneShot(carChangeClip);
 	
 		}
 		waitForNext = true;
@@ -108,7 +108,7 @@ public class CarSelectionUIController : MonoBehaviour {
 	void rightArrowPressed(){
 		if (waitForNext) return;
 		if(PlayerPrefs.GetInt ("sound")==0){
-			audio.PlayOneShot(carChangeClip);
+			GetComponent<AudioSource>().PlayOneShot(carChangeClip);
 			
 		}
 		waitForNext = true;
@@ -131,8 +131,8 @@ public class CarSelectionUIController : MonoBehaviour {
 
 	void disableColliders(){
 
-		leftArrow.collider.enabled = false;
-		rightArrow.collider.enabled = false;
+		leftArrow.GetComponent<Collider>().enabled = false;
+		rightArrow.GetComponent<Collider>().enabled = false;
 	}
 
 	void disableAllSpecs(){
@@ -144,8 +144,8 @@ public class CarSelectionUIController : MonoBehaviour {
 
 	void enableColliders(){
 		
-		leftArrow.collider.enabled = true;
-		rightArrow.collider.enabled = true;
+		leftArrow.GetComponent<Collider>().enabled = true;
+		rightArrow.GetComponent<Collider>().enabled = true;
 	}
 
 	public void setCarColor(){
@@ -214,7 +214,7 @@ public class CarSelectionUIController : MonoBehaviour {
 			return;	
 		}
 		if(PlayerPrefs.GetInt ("sound")==0){
-			audio.PlayOneShot(clickClip);
+			GetComponent<AudioSource>().PlayOneShot(clickClip);
 			
 		}
 		PlayerPrefs.SetInt ("CurrentCarSelected", currentIndex);
@@ -229,7 +229,7 @@ public class CarSelectionUIController : MonoBehaviour {
 		int points = PlayerPrefs.GetInt ("totalPoints",0);
 		if(points< getCurrentIndexCarPoints()){
 			if(PlayerPrefs.GetInt ("sound")==0){
-				audio.PlayOneShot(notEnoughClip);
+				GetComponent<AudioSource>().PlayOneShot(notEnoughClip);
 				
 			}
 			GameObject label = Instantiate(Resources.Load("NotEnoughPoints")) as GameObject;
@@ -238,7 +238,7 @@ public class CarSelectionUIController : MonoBehaviour {
 			return;
 		}
 		if(PlayerPrefs.GetInt ("sound")==0){
-			audio.PlayOneShot(clickClip);
+			GetComponent<AudioSource>().PlayOneShot(clickClip);
 			
 		}
 		points -= getCurrentIndexCarPoints ();
@@ -278,7 +278,7 @@ public class CarSelectionUIController : MonoBehaviour {
 
 	void GoPressed(){
 		if(PlayerPrefs.GetInt ("sound")==0){
-			audio.PlayOneShot(clickClip);
+			GetComponent<AudioSource>().PlayOneShot(clickClip);
 			
 		}
 		Application.LoadLevel ("TrackSelectionScene");
@@ -286,7 +286,7 @@ public class CarSelectionUIController : MonoBehaviour {
 	}
 	void TracksPressed(){
 		if(PlayerPrefs.GetInt ("sound")==0){
-			audio.PlayOneShot(clickClip);
+			GetComponent<AudioSource>().PlayOneShot(clickClip);
 			
 		}
 		Application.LoadLevel ("TrackSelectionScene");

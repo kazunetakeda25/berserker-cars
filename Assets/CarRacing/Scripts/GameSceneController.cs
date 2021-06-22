@@ -77,7 +77,7 @@ public class GameSceneController : MonoBehaviour
 		void IntroEnd ()
 		{
 				initialCollider.SetActive (false);
-				mainCamObj.camera.enabled = true;
+				mainCamObj.GetComponent<Camera>().enabled = true;
 				GameObject.FindGameObjectWithTag ("CameraSwitch").SendMessage ("DoFade");
 				mainCamObj.SendMessage ("introFinished");
 				Invoke ("SecondIntroEnd",0);
@@ -93,7 +93,7 @@ public class GameSceneController : MonoBehaviour
 		StartCountDown.enabled = true;
 		startTime = Time.time;
 		if (checkIsSoundOn ()) {
-			audio.PlayOneShot (goSoundClip);
+			GetComponent<AudioSource>().PlayOneShot (goSoundClip);
 		}
 	}
 
@@ -109,7 +109,7 @@ public class GameSceneController : MonoBehaviour
 		{
 				StartCountDown.gameObject.SetActive (false);
 				if (checkIsSoundOn ()) {
-						audio.Play ();
+						GetComponent<AudioSource>().Play ();
 				}
 
 		}
@@ -151,14 +151,14 @@ public class GameSceneController : MonoBehaviour
 		void StartGame ()
 		{
 				Invoke ("waitToDiableGo", 1);
-				StartCountDown.collider.enabled = false;
+				StartCountDown.GetComponent<Collider>().enabled = false;
 
 				for (int i=0; i<totalOpponentCars; i++) {
 						OpponentCars [i].GetComponent<hoMove> ().enabled = true;
 						OpponentCars [i].GetComponent<OpponentcarTyreRotation> ().rotate = true;
 				}
 				InvokeRepeating ("MoveCarsWithRandomSpeed", 0, 1f);
-				playerCar.rigidbody.isKinematic = false;
+				playerCar.GetComponent<Rigidbody>().isKinematic = false;
 
 		}
 

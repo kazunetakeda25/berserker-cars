@@ -234,7 +234,7 @@ public static class EditPivot
 		mesh.bindposes = source.bindposes;
 		mesh.colors = source.colors;
 		
-		mesh.Optimize();
+		;
 		mesh.RecalculateBounds();
 		mesh.RecalculateNormals();		
 		return mesh;
@@ -242,7 +242,7 @@ public static class EditPivot
 		
 	static List<Transform> GetChildren( GameObject go, bool onlyFirstLevel = true )
 	{
-		if ( go.transform.GetChildCount() == 0 )
+		if ( go.transform.childCount == 0 )
 		{
 			Errormsg = "EditPivot: '" + go.name + "' has no children!";			
 			return null;
@@ -250,7 +250,7 @@ public static class EditPivot
 		List<Transform> children = new List<Transform>();
 		if ( onlyFirstLevel )
 		{
-			for ( int i=0; i< go.transform.GetChildCount(); i++ )
+			for ( int i=0; i< go.transform.childCount; i++ )
 			{
 				children.Add( go.transform.GetChild(i) );
 			}

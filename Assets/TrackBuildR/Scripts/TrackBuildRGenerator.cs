@@ -421,7 +421,7 @@ public class TrackBuildRGenerator : MonoBehaviour
                     if (track.numberOfTextures > 0)
                         newMeshHolder.AddComponent<MeshRenderer>().material = track.Texture(curve.trackTextureStyleIndex).material;// track.trackTexture.material;
 #if UNITY_EDITOR
-                    EditorUtility.SetSelectedWireframeHidden(newMeshHolder.renderer, !track.showWireframe);
+                    EditorUtility.SetSelectedWireframeHidden(newMeshHolder.GetComponent<Renderer>(), !track.showWireframe);
 #endif
                 }
 
@@ -436,7 +436,7 @@ public class TrackBuildRGenerator : MonoBehaviour
                     if (track.numberOfTextures > 0)
                         newMeshHolder.AddComponent<MeshRenderer>().material = track.Texture(curve.boundaryTextureStyleIndex).material;// track.trackTexture.material;
 #if UNITY_EDITOR
-                    EditorUtility.SetSelectedWireframeHidden(newMeshHolder.renderer, !track.showWireframe);
+                    EditorUtility.SetSelectedWireframeHidden(newMeshHolder.GetComponent<Renderer>(), !track.showWireframe);
 #endif
                 }
 
@@ -453,7 +453,7 @@ public class TrackBuildRGenerator : MonoBehaviour
                         if (track.numberOfTextures > 0)
                             newMeshHolder.AddComponent<MeshRenderer>().material = track.Texture(curve.offroadTextureStyleIndex).material;// track.offroadTexture.material;
 #if UNITY_EDITOR
-                        EditorUtility.SetSelectedWireframeHidden(newMeshHolder.renderer, !track.showWireframe);
+                        EditorUtility.SetSelectedWireframeHidden(newMeshHolder.GetComponent<Renderer>(), !track.showWireframe);
 #endif
                     }
                 }
@@ -488,7 +488,7 @@ public class TrackBuildRGenerator : MonoBehaviour
                         if (track.numberOfTextures > 0)
                             newMeshHolder.AddComponent<MeshRenderer>().material = track.Texture(curve.bumperTextureStyleIndex).material;// track.bumperTexture.material;
 #if UNITY_EDITOR
-                        EditorUtility.SetSelectedWireframeHidden(newMeshHolder.renderer, !track.showWireframe);
+                        EditorUtility.SetSelectedWireframeHidden(newMeshHolder.GetComponent<Renderer>(), !track.showWireframe);
 #endif
                     }
                 }

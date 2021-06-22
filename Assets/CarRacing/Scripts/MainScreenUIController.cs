@@ -17,7 +17,7 @@ public class MainScreenUIController : MonoBehaviour {
 		AudioListener.volume = PlayerPrefs.GetFloat ("audioVolume", 1);
 		if(PlayerPrefs.GetInt ("sound")==0){
 			if(PlayerPrefs.GetInt ("music")==0){
-				audio.Play();
+				GetComponent<AudioSource>().Play();
 				source.Play();
 			}
 		}
@@ -30,14 +30,14 @@ public class MainScreenUIController : MonoBehaviour {
 
 	void OptionsPressed(){
 		if(PlayerPrefs.GetInt ("sound")==0){
-			audio.PlayOneShot(clickClip);	
+			GetComponent<AudioSource>().PlayOneShot(clickClip);	
 		}
 		Application.LoadLevel ("Options1");
 	}
 
 	void PowerPressed(){
 		if(PlayerPrefs.GetInt ("sound")==0){
-			audio.PlayOneShot(clickClip);
+			GetComponent<AudioSource>().PlayOneShot(clickClip);
 			
 		}
 
@@ -46,7 +46,7 @@ public class MainScreenUIController : MonoBehaviour {
 
 	void StartPressed(){
 		if(PlayerPrefs.GetInt ("sound")==0){
-			audio.PlayOneShot(clickClip);
+			GetComponent<AudioSource>().PlayOneShot(clickClip);
 			
 		}
 		Application.LoadLevel ("CarSelectionScene");

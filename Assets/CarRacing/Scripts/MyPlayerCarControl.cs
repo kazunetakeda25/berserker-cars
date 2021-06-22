@@ -38,16 +38,16 @@ public class MyPlayerCarControl : MonoBehaviour {
 	}
 
 	void SpeedCalculator(){
-		float SpeedMS =new Vector2(Vector3.Dot(rigidbody.velocity, transform.forward), Vector3.Dot(rigidbody.velocity, transform.right)).magnitude * 3.2f;
+		float SpeedMS =new Vector2(Vector3.Dot(GetComponent<Rigidbody>().velocity, transform.forward), Vector3.Dot(GetComponent<Rigidbody>().velocity, transform.right)).magnitude * 3.2f;
 		speed.text = Mathf.Floor (SpeedMS) + "";
 		speedoMeter.transform.localEulerAngles = new Vector3 (0, (SpeedMS) * 0.915f, 0);
 		if (soundEnabled && SpeedMS >60) {
-			if (!audio.isPlaying) {
-				audio.Play ();
+			if (!GetComponent<AudioSource>().isPlaying) {
+				GetComponent<AudioSource>().Play ();
 			}
 		} else {
-			if (audio.isPlaying) {
-				audio.Stop();
+			if (GetComponent<AudioSource>().isPlaying) {
+				GetComponent<AudioSource>().Stop();
 			}
 		}
 

@@ -13,10 +13,10 @@ public class TilingScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (axis == 1) {
-			renderer.material.mainTextureOffset -= new Vector2 (0, -0.07f);
+			GetComponent<Renderer>().material.mainTextureOffset -= new Vector2 (0, -0.07f);
 		}
 		else {
-			renderer.material.mainTextureOffset -= new Vector2 ( -0.0009f,0);
+			GetComponent<Renderer>().material.mainTextureOffset -= new Vector2 ( -0.0009f,0);
 		}
 	
 	}

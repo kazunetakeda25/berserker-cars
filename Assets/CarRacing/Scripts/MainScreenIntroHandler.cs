@@ -19,7 +19,7 @@ public class MainScreenIntroHandler : MonoBehaviour {
 	public IEnumerator startCars(){
 		float delay = Random.Range(0.3f,0.8f);
 		for(int i=0;i<animations.Length;i++){
-			animations[i].animation.Play("MovingIntro");
+			animations[i].GetComponent<Animation>().Play("MovingIntro");
 			yield return new WaitForSeconds (delay);
 			delay +=0.1f;
 		}

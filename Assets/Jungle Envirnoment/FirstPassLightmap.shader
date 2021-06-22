@@ -1,3 +1,8 @@
+// Upgrade NOTE: commented out 'float4 unity_LightmapST', a built-in variable
+// Upgrade NOTE: commented out 'sampler2D unity_Lightmap', a built-in variable
+// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+// Upgrade NOTE: replaced tex2D unity_Lightmap with UNITY_SAMPLE_TEX2D
+
 // Upgrade NOTE: replaced 'PositionFog()' with multiply of UNITY_MATRIX_MVP by position
 // Upgrade NOTE: replaced 'V2F_POS_FOG' with 'float4 pos : SV_POSITION'
 
@@ -48,8 +53,8 @@ uniform sampler2D _Control;
 uniform float4 _Control_ST;
 
 #ifdef LIGHTMAP_ON
-uniform float4 unity_LightmapST;
-uniform sampler2D unity_Lightmap;
+// uniform float4 unity_LightmapST;
+// uniform sampler2D unity_Lightmap;
 #endif
 
 uniform sampler2D _Splat0,_Splat1,_Splat2,_Splat3;
@@ -57,7 +62,7 @@ uniform float4 _Splat0_ST,_Splat1_ST,_Splat2_ST,_Splat3_ST;
 
 v2f_vertex simplevert (appdata_lightmap v) {
 	v2f_vertex o;
-	o.pos = mul (UNITY_MATRIX_MVP, v.vertex);
+	o.pos = UnityObjectToClipPos (v.vertex);
 	o.uv[0].xy = TRANSFORM_TEX (v.texcoord.xy, _Control);
 #ifdef LIGHTMAP_ON	
 	o.uv[0].zw = v.texcoord1.xy * unity_LightmapST.xy + unity_LightmapST.zw;
@@ -79,7 +84,7 @@ float4 simplefrag (v2f_vertex i) : COLOR {
 	splat_color += splat_control.b * tex2D (_Splat2, i.uv[2].xy); 
 	splat_color += splat_control.a * tex2D (_Splat3, i.uv[2].zw);
 #ifdef LIGHTMAP_ON
-	splat_color.rgb *= DecodeLightmap( tex2D (unity_Lightmap, i.uv[0].zw));
+	splat_color.rgb *= DecodeLightmap( UNITY_SAMPLE_TEX2D (unity_Lightmap, i.uv[0].zw));
 #endif
 
 	return splat_color; 

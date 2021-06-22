@@ -79,7 +79,7 @@ public class WaypointEditor : Editor
             }
 
             //path name already given, abort with short editor warning
-            if (script.transform.FindChild(pathName) != null)
+            if (script.transform.Find(pathName) != null)
             {
                 Debug.LogWarning("path name already given");
                 return;

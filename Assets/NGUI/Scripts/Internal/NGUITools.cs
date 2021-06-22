@@ -1,6 +1,6 @@
 //----------------------------------------------
 //            NGUI: Next-Gen UI kit
-// Copyright © 2011-2012 Tasharen Entertainment
+// Copyright ï¿½ 2011-2012 Tasharen Entertainment
 //----------------------------------------------
 
 using UnityEngine;
@@ -52,8 +52,9 @@ static public class NGUITools
 	{
 		get
 		{
-			return Application.platform != RuntimePlatform.WindowsWebPlayer &&
-				Application.platform != RuntimePlatform.OSXWebPlayer;
+			//return Application.platform != RuntimePlatform.WindowsWebPlayer &&
+			//	Application.platform != RuntimePlatform.OSXWebPlayer;
+			return true;
 		}
 	}
 
@@ -93,7 +94,7 @@ static public class NGUITools
 
 			if (mListener != null)
 			{
-				AudioSource source = mListener.audio;
+				AudioSource source = mListener.GetComponent<AudioSource>();
 				if (source == null) source = mListener.gameObject.AddComponent<AudioSource>();
 				source.pitch = pitch;
 #if !UNITY_FLASH
@@ -510,7 +511,7 @@ static public class NGUITools
 	{
 		SetActiveSelf(t.gameObject, true);
 
-		for (int i = 0, imax = t.GetChildCount(); i < imax; ++i)
+		for (int i = 0, imax = t.childCount; i < imax; ++i)
 		{
 			Transform child = t.GetChild(i);
 			Activate(child);
@@ -523,7 +524,7 @@ static public class NGUITools
 
 	static void Deactivate (Transform t)
 	{
-		for (int i = 0, imax = t.GetChildCount(); i < imax; ++i)
+		for (int i = 0, imax = t.childCount; i < imax; ++i)
 		{
 			Transform child = t.GetChild(i);
 			Deactivate(child);
@@ -558,7 +559,7 @@ static public class NGUITools
 
 		if (state)
 		{
-			for (int i = 0, imax = t.GetChildCount(); i < imax; ++i)
+			for (int i = 0, imax = t.childCount; i < imax; ++i)
 			{
 				Transform child = t.GetChild(i);
 				Activate(child);
@@ -566,7 +567,7 @@ static public class NGUITools
 		}
 		else
 		{
-			for (int i = 0, imax = t.GetChildCount(); i < imax; ++i)
+			for (int i = 0, imax = t.childCount; i < imax; ++i)
 			{
 				Transform child = t.GetChild(i);
 				Deactivate(child);
@@ -610,7 +611,7 @@ static public class NGUITools
 
 		Transform t = go.transform;
 		
-		for (int i = 0, imax = t.GetChildCount(); i < imax; ++i)
+		for (int i = 0, imax = t.childCount; i < imax; ++i)
 		{
 			Transform child = t.GetChild(i);
 			SetLayer(child.gameObject, layer);

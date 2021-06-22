@@ -60,15 +60,15 @@ public class TrackBuildREditor : Editor
         {
             _trackBuildR.trackEditorPreview = new GameObject("Track Preview Cam");
             _trackBuildR.trackEditorPreview.AddComponent<Camera>();
-            _trackBuildR.trackEditorPreview.camera.fov = 80;
+            _trackBuildR.trackEditorPreview.GetComponent<Camera>().fieldOfView = 80;
             //Retreive camera settings from the main camera
             Camera[] cams = Camera.allCameras;
             bool sceneHasCamera = cams.Length > 0;
             Camera sceneCamera = null;
             Skybox sceneCameraSkybox = null;
-            if (Camera.mainCamera)
+            if (Camera.main)
             {
-                sceneCamera = Camera.mainCamera;
+                sceneCamera = Camera.main;
             }
             else if (sceneHasCamera)
             {
@@ -80,7 +80,7 @@ public class TrackBuildREditor : Editor
                     sceneCameraSkybox = sceneCamera.GetComponent<Skybox>();
             if (sceneCamera != null)
             {
-                _trackBuildR.trackEditorPreview.camera.backgroundColor = sceneCamera.backgroundColor;
+                _trackBuildR.trackEditorPreview.GetComponent<Camera>().backgroundColor = sceneCamera.backgroundColor;
                 if (sceneCameraSkybox != null)
                     _trackBuildR.trackEditorPreview.AddComponent<Skybox>().material = sceneCameraSkybox.material;
                 else

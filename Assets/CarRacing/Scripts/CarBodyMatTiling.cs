@@ -7,7 +7,7 @@ public class CarBodyMatTiling : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		RenderSettings.skybox = tempSkyBox;
-		mats = renderer.materials;
+		mats = GetComponent<Renderer>().materials;
 	}
 	
 	// Update is called once per frame

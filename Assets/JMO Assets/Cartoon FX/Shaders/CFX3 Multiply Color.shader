@@ -1,3 +1,5 @@
+// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
 // CartoonFX 3 Shader
 // (c) 2013, Jean Moreno
 
@@ -61,7 +63,7 @@ Shader "Cartoon FX/Particle Multiply Colored"
 				v2f vert (appdata_t v)
 				{
 					v2f o;
-					o.vertex = mul(UNITY_MATRIX_MVP, v.vertex);
+					o.vertex = UnityObjectToClipPos(v.vertex);
 					#ifdef SOFTPARTICLES_ON
 					o.projPos = ComputeScreenPos (o.vertex);
 					COMPUTE_EYEDEPTH(o.projPos.z);

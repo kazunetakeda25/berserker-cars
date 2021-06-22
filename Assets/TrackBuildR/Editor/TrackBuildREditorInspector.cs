@@ -525,7 +525,7 @@ public class TrackBuildREditorInspector
                 Title("Diagram Image", TrackBuildRColours.RED);
 
                 _track.showDiagram = EditorGUILayout.Toggle("Show Diagram", _track.showDiagram);
-                _track.diagramGO.renderer.enabled = _track.showDiagram;
+                _track.diagramGO.GetComponent<Renderer>().enabled = _track.showDiagram;
 
                 EditorGUILayout.BeginHorizontal();
                 if (_track.diagramMaterial.mainTexture != null)
@@ -715,14 +715,14 @@ public class TrackBuildREditorInspector
         if (pointPreviewTexture == null)
             pointPreviewTexture = new RenderTexture(previewResolution, Mathf.RoundToInt(previewResolution / aspect), 24, RenderTextureFormat.RGB565);
 
-        _track.diagramGO.renderer.enabled = false;
+        _track.diagramGO.GetComponent<Renderer>().enabled = false;
         GameObject trackEditorPreview = _trackBuildR.trackEditorPreview;
         trackEditorPreview.transform.position = _track.GetTrackPosition(_trackBuildR.previewPercentage) + previewCameraHeight;
         trackEditorPreview.transform.LookAt(_track.GetTrackPosition((_trackBuildR.previewPercentage + 0.0001f) % 1) + previewCameraHeight);
-        trackEditorPreview.camera.targetTexture = pointPreviewTexture;
-        trackEditorPreview.camera.Render();
-        trackEditorPreview.camera.targetTexture = null;
-        _track.diagramGO.renderer.enabled = _track.showDiagram;
+        trackEditorPreview.GetComponent<Camera>().targetTexture = pointPreviewTexture;
+        trackEditorPreview.GetComponent<Camera>().Render();
+        trackEditorPreview.GetComponent<Camera>().targetTexture = null;
+        _track.diagramGO.GetComponent<Renderer>().enabled = _track.showDiagram;
 
         GUILayout.Label(pointPreviewTexture, GUILayout.Width(400), GUILayout.Height(225));
 

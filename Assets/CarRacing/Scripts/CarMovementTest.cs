@@ -37,7 +37,7 @@ public class CarMovementTest : MonoBehaviour {
 				break;
 			case btnDir.back:
 			if(PlayerPrefs.GetInt("sound",0)==0){
-				audio.Play();
+				GetComponent<AudioSource>().Play();
 			}
 				main.SendMessage ("ReverseValue", -0.2f);
 				break;
@@ -62,7 +62,7 @@ public class CarMovementTest : MonoBehaviour {
 		case btnDir.back:
 			main.SendMessage ("ReverseValue", 0f);
 			if(PlayerPrefs.GetInt("sound",0)==0){
-				audio.Stop();
+				GetComponent<AudioSource>().Stop();
 			}
 			break;
 			
@@ -95,7 +95,7 @@ public class CarMovementTest : MonoBehaviour {
 				main.SendMessage ("setFValue", val);
 				break;
 			case btnDir.left:
-				if(car.rigidbody.velocity.x>22.0f){
+				if(car.GetComponent<Rigidbody>().velocity.x>22.0f){
 					val -=0.003f;
 					val = Mathf.Clamp(val,-0.7f,0);
 				}
@@ -107,7 +107,7 @@ public class CarMovementTest : MonoBehaviour {
 				main.SendMessage ("LeftValue", val);
 				break;
 			case btnDir.right: 
-				if(car.rigidbody.velocity.x>22.0f){
+				if(car.GetComponent<Rigidbody>().velocity.x>22.0f){
 					val +=0.003f;
 					val = Mathf.Clamp(val,0,0.7f);
 				}

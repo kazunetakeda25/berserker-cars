@@ -23,7 +23,7 @@ public class CFX3_AutoStopLoopedEffect : MonoBehaviour
 			d -= Time.deltaTime;
 			if(d <= 0)
 			{
-				this.particleSystem.Stop(true);
+				this.GetComponent<ParticleSystem>().Stop(true);
 				
 				CFX3_Demo_Translate translation = this.gameObject.GetComponent<CFX3_Demo_Translate>();
 				if(translation != null)
